@@ -11,10 +11,10 @@ use Mintellity\LaravelTabbedSession\LaravelTabbedSession;
 class TabbedUrlGenerator extends UrlGenerator
 {
     /**
-     * @param Route $route
-     * @param mixed $parameters
-     * @param bool $absolute
-     * @return string
+     * @param  Route  $route
+     * @param  mixed  $parameters
+     * @param  bool  $absolute
+     *
      * @throws UrlGenerationException
      */
     public function toRoute($route, $parameters, $absolute): string

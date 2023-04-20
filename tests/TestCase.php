@@ -3,8 +3,8 @@
 namespace Mintellity\TabbedSession\Tests;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Orchestra\Testbench\TestCase as Orchestra;
 use Mintellity\TabbedSession\LaravelTabbedSessionServiceProvider;
+use Orchestra\Testbench\TestCase as Orchestra;
 
 class TestCase extends Orchestra
 {

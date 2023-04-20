@@ -9,26 +9,20 @@ class Tab
 {
     public function __construct(
         private readonly string $tabId,
-        private readonly bool   $isNew = false,
-    )
-    {
+        private readonly bool $isNew = false,
+    ) {
     }
 
     /**
      * Get the id of this tab.
-     *
-     * @return string
      */
     public function getId(): string
     {
         return $this->tabId;
     }
 
-
     /**
      * If this tab was newly created in the last request.
-     *
-     * @return bool
      */
     public function isNew(): bool
     {
@@ -37,8 +31,6 @@ class Tab
 
     /**
      * Access the tabs session data.
-     *
-     * @return TabSession
      */
     public function session(): TabSession
     {
@@ -48,8 +40,8 @@ class Tab
     /**
      * Copy all session data form the old tab to this tab.
      *
-     * @param Tab $tab
      * @return $this
+     *
      * @throws ContainerExceptionInterface
      * @throws NotFoundExceptionInterface
      */
