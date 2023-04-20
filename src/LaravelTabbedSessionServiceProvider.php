@@ -1,14 +1,14 @@
 <?php
 
-namespace Mintellity\TabbedSession;
+namespace Mintellity\LaravelTabbedSession;
 
-use Mintellity\TabbedSession\Entities\Tab;
-use Mintellity\TabbedSession\Entities\TabSession;
-use Mintellity\TabbedSession\Routing\TabbedUrlGenerator;
+use Mintellity\LaravelTabbedSession\Entities\Tab;
+use Mintellity\LaravelTabbedSession\Entities\TabSession;
+use Mintellity\LaravelTabbedSession\Routing\TabbedUrlGenerator;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 
-class TabbedSessionServiceProvider extends PackageServiceProvider
+class LaravelTabbedSessionServiceProvider extends PackageServiceProvider
 {
     public function configurePackage(Package $package): void
     {
@@ -18,7 +18,7 @@ class TabbedSessionServiceProvider extends PackageServiceProvider
          * More info: https://github.com/spatie/laravel-package-tools
          */
         $package
-            ->name('tabbed-session')
+            ->name('laravel-tabbed-session')
             ->hasConfigFile()
             ->hasAssets();
     }

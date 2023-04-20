@@ -1,7 +1,7 @@
 <?php
 
-use Mintellity\TabbedSession\Entities\Tab;
-use Mintellity\TabbedSession\Exceptions\NoTabIdFoundException;
+use Mintellity\LaravelTabbedSession\Entities\Tab;
+use Mintellity\LaravelTabbedSession\Exceptions\NoTabIdFoundException;
 
 
 /**

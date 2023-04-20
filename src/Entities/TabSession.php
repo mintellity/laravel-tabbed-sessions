@@ -1,6 +1,6 @@
 <?php
 
-namespace Mintellity\TabbedSession\Entities;
+namespace Mintellity\LaravelTabbedSession\Entities;
 
 use Closure;
 use Psr\Container\ContainerExceptionInterface;

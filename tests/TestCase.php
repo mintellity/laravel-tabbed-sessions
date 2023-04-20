@@ -4,7 +4,7 @@ namespace Mintellity\TabbedSession\Tests;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Orchestra\Testbench\TestCase as Orchestra;
-use Mintellity\TabbedSession\TabbedSessionServiceProvider;
+use Mintellity\TabbedSession\LaravelTabbedSessionServiceProvider;
 
 class TestCase extends Orchestra
 {
@@ -13,14 +13,14 @@ class TestCase extends Orchestra
         parent::setUp();
 
         Factory::guessFactoryNamesUsing(
-            fn (string $modelName) => 'Mintellity\\TabbedSession\\Database\\Factories\\'.class_basename($modelName).'Factory'
+            fn (string $modelName) => 'Mintellity\\LaravelTabbedSession\\Database\\Factories\\'.class_basename($modelName).'Factory'
         );
     }
 
     protected function getPackageProviders($app)
     {
         return [
-            TabbedSessionServiceProvider::class,
+            LaravelTabbedSessionServiceProvider::class,
         ];
     }
 

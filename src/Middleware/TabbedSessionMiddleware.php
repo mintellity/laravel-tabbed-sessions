@@ -1,12 +1,12 @@
 <?php
 
-namespace Mintellity\TabbedSession\Middleware;
+namespace Mintellity\LaravelTabbedSession\Middleware;
 
 use Closure;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
-use Mintellity\TabbedSession\Exceptions\NoTabIdFoundException;
+use Mintellity\LaravelTabbedSession\Exceptions\NoTabIdFoundException;
 use Psr\Container\ContainerExceptionInterface;
 use Psr\Container\NotFoundExceptionInterface;
 use Symfony\Component\HttpFoundation\Response;

@@ -1,6 +1,6 @@
 <?php
 
-namespace Mintellity\TabbedSession\Exceptions;
+namespace Mintellity\LaravelTabbedSession\Exceptions;
 
 use Exception;
 

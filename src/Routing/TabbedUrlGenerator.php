@@ -1,12 +1,12 @@
 <?php
 
-namespace Mintellity\TabbedSession\Routing;
+namespace Mintellity\LaravelTabbedSession\Routing;
 
 use Exception;
 use Illuminate\Routing\Exceptions\UrlGenerationException;
 use Illuminate\Routing\Route;
 use Illuminate\Routing\UrlGenerator;
-use Mintellity\TabbedSession\Exceptions\NoTabIdFoundException;
+use Mintellity\LaravelTabbedSession\Exceptions\NoTabIdFoundException;
 
 class TabbedUrlGenerator extends UrlGenerator
 {

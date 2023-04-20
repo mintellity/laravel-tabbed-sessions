@@ -1,6 +1,6 @@
 <?php
 
-namespace Mintellity\TabbedSession\Entities;
+namespace Mintellity\LaravelTabbedSession\Entities;
 
 use Psr\Container\ContainerExceptionInterface;
 use Psr\Container\NotFoundExceptionInterface;
