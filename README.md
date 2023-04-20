@@ -23,31 +23,8 @@ You can install the package via composer:
 composer require mintellity/laravel-tabbed-session
 ```
 
-You can publish and run the migrations with:
-
-```bash
-php artisan vendor:publish --tag="tabbed-session-migrations"
-php artisan migrate
-```
-
-You can publish the config file with:
-
-```bash
-php artisan vendor:publish --tag="tabbed-session-config"
-```
-
-This is the contents of the published config file:
-
-```php
-return [
-];
-```
-
-Optionally, you can publish the views using
-
-```bash
-php artisan vendor:publish --tag="tabbed-session-views"
-```
+Middleware
+JS
 
 ## Usage
 
@@ -55,6 +32,10 @@ php artisan vendor:publish --tag="tabbed-session-views"
 $tabbedSession = new Mintellity\TabbedSession();
 echo $tabbedSession->echoPhrase('Hello, Mintellity!');
 ```
+
+Access tabbed session data
+
+```php
 
 ## Testing
 

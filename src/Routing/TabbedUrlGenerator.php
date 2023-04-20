@@ -2,7 +2,6 @@
 
 namespace Mintellity\LaravelTabbedSession\Routing;
 
-use Exception;
 use Illuminate\Routing\Exceptions\UrlGenerationException;
 use Illuminate\Routing\Route;
 use Illuminate\Routing\UrlGenerator;
@@ -16,14 +15,17 @@ class TabbedUrlGenerator extends UrlGenerator
      * @param bool $absolute
      * @return string
      * @throws UrlGenerationException
-     * @throws NoTabIdFoundException
      */
     public function toRoute($route, $parameters, $absolute): string
     {
-        if (is_array($parameters)) {
-            $parameters['tabId'] = tab()->getId();
-        } else {
-            $parameters = [$parameters, 'tabId' => tab()->getId()];
+        try {
+            if (is_array($parameters)) {
+                $parameters['tabId'] = tab()->getId();
+            } else {
+                $parameters = [$parameters, 'tabId' => tab()->getId()];
+            }
+        } catch (NoTabIdFoundException) {
+            // Do nothing
         }
 
         return parent::toRoute($route, $parameters, $absolute);
