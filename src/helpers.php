@@ -4,13 +4,9 @@ use Mintellity\LaravelTabbedSession\Entities\Tab;
 use Mintellity\LaravelTabbedSession\Exceptions\NoTabIdFoundException;
 use Mintellity\LaravelTabbedSession\LaravelTabbedSession;
 
-
 /**
  * Get the tab instance.
  *
- * @param string|null $tabId
- * @param bool $isNew
- * @return Tab
  * @throws NoTabIdFoundException
  */
 function browserTab(string $tabId = null, bool $isNew = false): Tab

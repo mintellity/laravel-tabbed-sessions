@@ -16,9 +16,8 @@ class TabbedSessionMiddleware
     /**
      * Handle an incoming request.
      *
-     * @param Request $request
      * @param Closure(Request): (Response) $next
-     * @return Response
+     *
      * @throws NoTabIdFoundException
      * @throws ContainerExceptionInterface
      * @throws NotFoundExceptionInterface
@@ -40,7 +39,7 @@ class TabbedSessionMiddleware
         $referrer = parse_url(request()->header('referer'));
         parse_str($referrer['query'] ?? '', $query);
 
-        if (!(request()->query(LaravelTabbedSession::getTabQueryParameterName()) || request()->query(LaravelTabbedSession::getTabQueryParameterName('new')) || array_key_exists(LaravelTabbedSession::getTabQueryParameterName(), $query) || array_key_exists(LaravelTabbedSession::getTabQueryParameterName('new'), $query))) {
+        if (! (request()->query(LaravelTabbedSession::getTabQueryParameterName()) || request()->query(LaravelTabbedSession::getTabQueryParameterName('new')) || array_key_exists(LaravelTabbedSession::getTabQueryParameterName(), $query) || array_key_exists(LaravelTabbedSession::getTabQueryParameterName('new'), $query))) {
             return redirect()->to(request()->fullUrlWithQuery([
                 LaravelTabbedSession::getTabQueryParameterName('new') => Str::uuid()->toString(),
                 LaravelTabbedSession::getTabQueryParameterName('old') => null,
