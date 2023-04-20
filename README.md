@@ -34,6 +34,7 @@ The default query parameter name is `tabId`. You can change this by editing your
 
 ```env
 BROWSER_TAB_URL_PARAMETER_NAME=tabId
+MIX_BROWSER_TAB_URL_PARAMETER_NAME=${BROWSER_TAB_URL_PARAMETER_NAME}
 ```
 
 ## Usage
