@@ -32,8 +32,6 @@ function handleTabId(urlSearchParams) {
     }
 }
 
-console.log(getTabQueryParameterName('new'));
-
 function getTabQueryParameterName(prefix = '') {
     const URL_PARAMETER_NAME = process.env.MIX_BROWSER_TAB_URL_PARAMETER_NAME ?? 'tabId';
 
