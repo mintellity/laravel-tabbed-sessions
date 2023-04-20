@@ -18,9 +18,7 @@ class LaravelTabbedSessionServiceProvider extends PackageServiceProvider
          * More info: https://github.com/spatie/laravel-package-tools
          */
         $package
-            ->name('laravel-tabbed-session')
-            ->hasConfigFile()
-            ->hasAssets();
+            ->name('laravel-tabbed-session');
     }
 
     public function registeringPackage(): void
