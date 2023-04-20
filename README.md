@@ -30,13 +30,19 @@ Add the JS script to e.g. your `resources/js/app.js` file:
 require('../../vendor/mintellity/laravel-tabbed-session/resources/js/tabbedSession');
 ```
 
+The default query parameter name is `tabId`. You can change this by editing your environment file and adding the following line. Take care that the parameter name is unique and does not conflict with other parameters in your routes. If you change the parameter name, you also have to change the name in the JS script. If you use Laravel Mix, this will be done automatically:
+
+```env
+BROWSER_TAB_URL_PARAMETER_NAME=tabId
+```
+
 ## Usage
 
 To access the tabbed session, you can use the `tab()->session()` helper function:
 
 ```php
-tab()->session()->put('foo', 'bar');
-tab()->session()->get('foo'); // bar
+browserTab()->session()->put('foo', 'bar');
+browserTab()->session()->get('foo'); // bar
 ```
 
 ## Changelog

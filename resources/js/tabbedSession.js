@@ -4,18 +4,18 @@ const urlParams = new URLSearchParams(queryString);
 handleTabId(urlParams);
 
 function handleTabId(urlSearchParams) {
-    if (urlSearchParams.has('newTabId')) {
+    if (urlSearchParams.has(getTabQueryParameterName('new'))) {
         // We have a new tabId, save it to the storage
-        sessionStorage.setItem('tabId', urlSearchParams.get('newTabId'));
+        sessionStorage.setItem(getTabQueryParameterName(), urlSearchParams.get(getTabQueryParameterName('new')));
         return;
     }
 
-    const urlTabId = urlParams.get('tabId');
-    const storageTabId = sessionStorage.getItem('tabId');
+    const urlTabId = urlParams.get(getTabQueryParameterName());
+    const storageTabId = sessionStorage.getItem(getTabQueryParameterName());
 
     if (urlTabId === null) {
         // Only the url tab id is missing, set it to have the correct referrer for livewire
-        urlParams.set('tabId', storageTabId);
+        urlParams.set(getTabQueryParameterName(), storageTabId);
         location.search = urlParams.toString();
         return;
     }
@@ -23,11 +23,22 @@ function handleTabId(urlSearchParams) {
     if (storageTabId === null
         || storageTabId !== urlTabId) {
         // We have no tabId or something is wrong, request a new tabId
-        if (urlParams.has('tabId')) {
-            urlParams.set('oldTabId', urlParams.get('tabId'));
+        if (urlParams.has(getTabQueryParameterName())) {
+            urlParams.set(getTabQueryParameterName('old'), urlParams.get(getTabQueryParameterName()));
         }
 
-        urlParams.delete('tabId');
+        urlParams.delete(getTabQueryParameterName());
         location.search = urlParams.toString();
     }
+}
+
+console.log(getTabQueryParameterName('new'));
+
+function getTabQueryParameterName(prefix = '') {
+    const URL_PARAMETER_NAME = process.env.MIX_BROWSER_TAB_URL_PARAMETER_NAME ?? 'tabId';
+
+    if (prefix === '')
+        return URL_PARAMETER_NAME;
+
+    return prefix + URL_PARAMETER_NAME.charAt(0).toUpperCase() + URL_PARAMETER_NAME.slice(1);
 }

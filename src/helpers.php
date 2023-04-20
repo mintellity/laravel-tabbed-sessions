@@ -2,6 +2,7 @@
 
 use Mintellity\LaravelTabbedSession\Entities\Tab;
 use Mintellity\LaravelTabbedSession\Exceptions\NoTabIdFoundException;
+use Mintellity\LaravelTabbedSession\LaravelTabbedSession;
 
 
 /**
@@ -12,7 +13,7 @@ use Mintellity\LaravelTabbedSession\Exceptions\NoTabIdFoundException;
  * @return Tab
  * @throws NoTabIdFoundException
  */
-function tab(string $tabId = null, bool $isNew = false): Tab
+function browserTab(string $tabId = null, bool $isNew = false): Tab
 {
     if ($tabId) {
         return app(Tab::class, [
@@ -21,15 +22,15 @@ function tab(string $tabId = null, bool $isNew = false): Tab
         ]);
     }
 
-    if (request()->query('tabId')) {
+    if (request()->query(LaravelTabbedSession::getTabQueryParameterName())) {
         return app(Tab::class, [
-            'tabId' => request()->query('tabId'),
+            'tabId' => request()->query(LaravelTabbedSession::getTabQueryParameterName()),
         ]);
     }
 
-    if (request()->query('newTabId')) {
+    if (request()->query(LaravelTabbedSession::getTabQueryParameterName('new'))) {
         return app(Tab::class, [
-            'tabId' => request()->query('newTabId'),
+            'tabId' => request()->query(LaravelTabbedSession::getTabQueryParameterName('new')),
             'isNew' => true,
         ]);
     }
@@ -37,15 +38,15 @@ function tab(string $tabId = null, bool $isNew = false): Tab
     $referrer = parse_url(request()->header('referer'));
     parse_str($referrer['query'] ?? '', $query);
 
-    if (array_key_exists('tabId', $query)) {
+    if (array_key_exists(LaravelTabbedSession::getTabQueryParameterName(), $query)) {
         return app(Tab::class, [
-            'tabId' => $query['tabId'],
+            'tabId' => $query[LaravelTabbedSession::getTabQueryParameterName()],
         ]);
     }
 
-    if (array_key_exists('newTabId', $query)) {
+    if (array_key_exists(LaravelTabbedSession::getTabQueryParameterName('new'), $query)) {
         return app(Tab::class, [
-            'tabId' => $query['newTabId'],
+            'tabId' => $query[LaravelTabbedSession::getTabQueryParameterName('new')],
             'isNew' => true,
         ]);
     }

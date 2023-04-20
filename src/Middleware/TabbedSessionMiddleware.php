@@ -3,10 +3,10 @@
 namespace Mintellity\LaravelTabbedSession\Middleware;
 
 use Closure;
-use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Mintellity\LaravelTabbedSession\Exceptions\NoTabIdFoundException;
+use Mintellity\LaravelTabbedSession\LaravelTabbedSession;
 use Psr\Container\ContainerExceptionInterface;
 use Psr\Container\NotFoundExceptionInterface;
 use Symfony\Component\HttpFoundation\Response;
@@ -25,25 +25,25 @@ class TabbedSessionMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (request()->query('oldTabId') != null) {
+        if (request()->query(LaravelTabbedSession::getTabQueryParameterName('old')) != null) {
             $newTabId = Str::uuid()->toString();
 
-            $oldTab = tab(request()->query('oldTabId'));
-            $newTab = tab($newTabId, true)->copy($oldTab);
+            $oldTab = browserTab(request()->query(LaravelTabbedSession::getTabQueryParameterName('old')));
+            $newTab = browserTab($newTabId, true)->copy($oldTab);
 
             return redirect()->to(request()->fullUrlWithQuery([
-                'newTabId' => $newTab->getId(),
-                'oldTabId' => null,
+                LaravelTabbedSession::getTabQueryParameterName('new') => $newTab->getId(),
+                LaravelTabbedSession::getTabQueryParameterName('old') => null,
             ]));
         }
 
         $referrer = parse_url(request()->header('referer'));
         parse_str($referrer['query'] ?? '', $query);
 
-        if (!(request()->query('tabId') || request()->query('newTabId') || array_key_exists('tabId', $query) || array_key_exists('newTabId', $query))) {
+        if (!(request()->query(LaravelTabbedSession::getTabQueryParameterName()) || request()->query(LaravelTabbedSession::getTabQueryParameterName('new')) || array_key_exists(LaravelTabbedSession::getTabQueryParameterName(), $query) || array_key_exists(LaravelTabbedSession::getTabQueryParameterName('new'), $query))) {
             return redirect()->to(request()->fullUrlWithQuery([
-                'newTabId' => Str::uuid()->toString(),
-                'oldTabId' => null,
+                LaravelTabbedSession::getTabQueryParameterName('new') => Str::uuid()->toString(),
+                LaravelTabbedSession::getTabQueryParameterName('old') => null,
             ]));
         }
 
