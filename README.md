@@ -39,7 +39,7 @@ MIX_BROWSER_TAB_URL_PARAMETER_NAME=${BROWSER_TAB_URL_PARAMETER_NAME}
 
 ## Usage
 
-To access the tabbed session, you can use the `tab()->session()` helper function:
+To access the tabbed session, you can use the `browsserTab()->session()` helper function:
 
 ```php
 browserTab()->session()->put('foo', 'bar');
