@@ -1,14 +1,21 @@
 # Separate session for each browser tab.
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/mintellity/tabbed-session.svg?style=flat-square)](https://packagist.org/packages/mintellity/tabbed-session)
-[![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/mintellity/tabbed-session/run-tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/mintellity/tabbed-session/actions?query=workflow%3Arun-tests+branch%3Amain)
-[![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/mintellity/tabbed-session/fix-php-code-style-issues.yml?branch=main&label=code%20style&style=flat-square)](https://github.com/mintellity/tabbed-session/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain)
-[![Total Downloads](https://img.shields.io/packagist/dt/mintellity/tabbed-session.svg?style=flat-square)](https://packagist.org/packages/mintellity/tabbed-session)
-
 With this package, you can have a separate session for each browser tab. This is e.g. useful if you want to have a different tenant for each tab. This package utilizes a query parameter to identify the tab and stores all data in an array within the default session.
 
 ## Installation
 
+Add this repository to your `composer.json` file:
+
+```json
+{
+  "repositories": [
+    {
+      "type": "github",
+      "url": "https://github.com/mintellity/laravel-tabbed-sessions.git"
+    }
+  ]
+}
+ ```
 You can install the package via composer:
 
 ```bash
