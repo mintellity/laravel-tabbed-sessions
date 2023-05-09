@@ -1,6 +1,6 @@
 <?php
 
-namespace Mintellity\LaravelTabbedSession\Middleware;
+namespace Mintellity\LaravelTabbedSession\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;

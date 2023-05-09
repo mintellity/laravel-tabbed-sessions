@@ -38,6 +38,14 @@ class Tab
     }
 
     /**
+     * Access the tabs frontend session data.
+     */
+    public function frontendSession(): FrontendSession
+    {
+        return app(FrontendSession::class, ['tabId' => $this->tabId]);
+    }
+
+    /**
      * Copy all session data form the old tab to this tab.
      *
      * @return $this

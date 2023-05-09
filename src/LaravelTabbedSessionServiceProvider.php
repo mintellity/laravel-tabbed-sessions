@@ -2,6 +2,7 @@
 
 namespace Mintellity\LaravelTabbedSession;
 
+use Mintellity\LaravelTabbedSession\Entities\FrontendSession;
 use Mintellity\LaravelTabbedSession\Entities\Tab;
 use Mintellity\LaravelTabbedSession\Entities\TabSession;
 use Mintellity\LaravelTabbedSession\Routing\TabbedUrlGenerator;
@@ -41,5 +42,6 @@ class LaravelTabbedSessionServiceProvider extends PackageServiceProvider
 
         $this->app->singleton(Tab::class);
         $this->app->singleton(TabSession::class);
+        $this->app->singleton(FrontendSession::class);
     }
 }
