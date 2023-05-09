@@ -14,8 +14,6 @@ class FrontendSession
 
     /**
      * Get all frontend session data.
-     *
-     * @return array
      */
     public function all(): array
     {
@@ -29,7 +27,7 @@ class FrontendSession
 
     public function set(string $key, mixed $value): void
     {
-        if (!isset($this->frontendCookie[$this->tabId])) {
+        if (! isset($this->frontendCookie[$this->tabId])) {
             $this->frontendCookie[$this->tabId] = [];
         }
 
