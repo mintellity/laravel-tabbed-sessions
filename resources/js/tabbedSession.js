@@ -10,7 +10,7 @@ module.exports = (browserTabUrlParameter) => {
             // We have a new tabId, save it to the storage
             const newTabId = urlSearchParams.get(getTabQueryParameterName('new'));
             sessionStorage.setItem(getTabQueryParameterName(), newTabId);
-            return newTabId;
+            return;
         }
 
         const urlTabId = urlParams.get(getTabQueryParameterName());
@@ -20,7 +20,7 @@ module.exports = (browserTabUrlParameter) => {
             // Only the url tab id is missing, set it to have the correct referrer for livewire
             urlParams.set(getTabQueryParameterName(), storageTabId);
             location.search = urlParams.toString();
-            return urlTabId;
+            return;
         }
 
         if (storageTabId === null
@@ -33,8 +33,6 @@ module.exports = (browserTabUrlParameter) => {
             urlParams.delete(getTabQueryParameterName());
             location.search = urlParams.toString();
         }
-
-        return null;
     }
 
     function getTabQueryParameterName(prefix = '') {
