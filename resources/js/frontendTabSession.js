@@ -16,7 +16,7 @@ module.exports = (cookieName) => {
         get(key) {
             const frontendSession = readSessionCookie();
 
-            if (key)
+            if (key && frontendSession[window.tabId])
                 return frontendSession[window.tabId][key] ?? null;
             else
                 return frontendSession[window.tabId] ?? null;
