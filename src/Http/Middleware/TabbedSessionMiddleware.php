@@ -1,6 +1,6 @@
 <?php
 
-namespace Mintellity\LaravelTabbedSession\Middleware;
+namespace Mintellity\LaravelTabbedSession\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
@@ -18,8 +18,8 @@ class TabbedSessionMiddleware
      *
      * @param Closure(Request): (Response) $next
      *
-     * @throws NoTabIdFoundException
      * @throws ContainerExceptionInterface
+     * @throws NoTabIdFoundException
      * @throws NotFoundExceptionInterface
      */
     public function handle(Request $request, Closure $next): Response

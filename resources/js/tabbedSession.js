@@ -3,11 +3,13 @@ module.exports = (browserTabUrlParameter) => {
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
     handleTabId(urlParams);
+    window.tabId = sessionStorage.getItem(getTabQueryParameterName());
 
     function handleTabId(urlSearchParams) {
         if (urlSearchParams.has(getTabQueryParameterName('new'))) {
             // We have a new tabId, save it to the storage
-            sessionStorage.setItem(getTabQueryParameterName(), urlSearchParams.get(getTabQueryParameterName('new')));
+            const newTabId = urlSearchParams.get(getTabQueryParameterName('new'));
+            sessionStorage.setItem(getTabQueryParameterName(), newTabId);
             return;
         }
 
