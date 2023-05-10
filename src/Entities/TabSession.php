@@ -190,4 +190,12 @@ class TabSession
     {
         session()->forget($this->key($keys));
     }
+
+    /**
+     * Set the "previous" URL in the session.
+     */
+    public function setPreviousUrl(string $url): void
+    {
+        $this->put('_previous.url', $url);
+    }
 }
