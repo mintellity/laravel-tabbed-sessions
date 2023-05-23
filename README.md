@@ -4,18 +4,6 @@ With this package, you can have a separate session for each browser tab. This is
 
 ## Installation
 
-Add this repository to your `composer.json` file:
-
-```json
-{
-  "repositories": [
-    {
-      "type": "github",
-      "url": "https://github.com/mintellity/laravel-tabbed-sessions.git"
-    }
-  ]
-}
- ```
 You can install the package via composer:
 
 ```bash
