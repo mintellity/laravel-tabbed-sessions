@@ -44,6 +44,21 @@ browserTab()->session()->put('foo', 'bar');
 browserTab()->session()->get('foo'); // bar
 ```
 
+## Disable for some paths
+
+You can disable the TabbedSession entirely for specific paths.
+Include the paths in `$exclude` in the config. Regex-patterns matching against the path are also possible:
+
+```php
+return [
+    'exclude' => [
+        'admin/*', // Will disable middleware for all paths matching this pattern, e.g. admin/user/create
+    ]
+]
+```
+
+Beware: The helper function `browserTab()` will throw an exception if used on a disabled path.
+
 ## Frontend "Session"
 
 This is an optional feature that lets you store some data per tab in a cookie. The cookie can also be accessed from the frontend.
