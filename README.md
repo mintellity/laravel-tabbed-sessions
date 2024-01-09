@@ -15,7 +15,7 @@ Add the middleware to your `app/Http/Kernel.php` file. Beware that the middlewar
 ```php
 protected $middleware = [
     // ...
-    \Mintellity\TabbedSession\Middleware\TabbedSessionMiddleware::class,
+    \Mintellity\LaravelTabbedSession\Http\Middleware\TabbedSessionMiddleware::class,
 ];
 ```
 

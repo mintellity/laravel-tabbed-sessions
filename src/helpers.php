@@ -2,12 +2,14 @@
 
 use Mintellity\LaravelTabbedSession\Entities\Tab;
 use Mintellity\LaravelTabbedSession\Exceptions\NoTabIdFoundException;
+use Mintellity\LaravelTabbedSession\Exceptions\TabDisabledException;
 use Mintellity\LaravelTabbedSession\LaravelTabbedSession;
 
 /**
  * Get the tab instance.
  *
  * @throws NoTabIdFoundException
+ * @throws TabDisabledException
  */
 function browserTab(string $tabId = null, bool $isNew = false): Tab
 {
@@ -16,6 +18,10 @@ function browserTab(string $tabId = null, bool $isNew = false): Tab
             'tabId' => $tabId,
             'isNew' => $isNew,
         ]);
+    }
+
+    if (LaravelTabbedSession::disabledForPath()) {
+        throw new TabDisabledException();
     }
 
     if (request()->query(LaravelTabbedSession::getTabQueryParameterName())) {

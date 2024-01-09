@@ -24,6 +24,10 @@ class TabbedSessionMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
+        if (LaravelTabbedSession::disabledForPath()) {
+            return $next($request);
+        }
+
         if (request()->query(LaravelTabbedSession::getTabQueryParameterName('old')) != null) {
             $newTabId = Str::uuid()->toString();
 
