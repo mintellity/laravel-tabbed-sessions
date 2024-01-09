@@ -88,7 +88,7 @@ class TabSession
     /**
      * Determine if the session contains old input.
      */
-    public function hasOldInput(string $key = null): bool
+    public function hasOldInput(?string $key = null): bool
     {
         return session()->hasOldInput($this->key($key));
     }
@@ -96,7 +96,7 @@ class TabSession
     /**
      * Get the requested item from the flashed input array.
      */
-    public function getOldInput(string $key = null, mixed $default = null): mixed
+    public function getOldInput(?string $key = null, mixed $default = null): mixed
     {
         return session()->getOldInput($this->key($key), $default);
     }

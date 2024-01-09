@@ -17,6 +17,6 @@ class LaravelTabbedSession
 
     public static function disabledForPath(): bool
     {
-        return collect(config('tabbed-session.excluded'))->search(fn(string $pattern) => @preg_match($pattern, request()->path()) || $pattern === request()->path()) !== false;
+        return collect(config('tabbed-session.excluded'))->search(fn (string $pattern) => @preg_match($pattern, request()->path()) || $pattern === request()->path()) !== false;
     }
 }

@@ -11,7 +11,7 @@ use Mintellity\LaravelTabbedSession\LaravelTabbedSession;
  * @throws NoTabIdFoundException
  * @throws TabDisabledException
  */
-function browserTab(string $tabId = null, bool $isNew = false): Tab
+function browserTab(?string $tabId = null, bool $isNew = false): Tab
 {
     if ($tabId) {
         return app(Tab::class, [

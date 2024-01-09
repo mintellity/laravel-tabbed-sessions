@@ -16,7 +16,7 @@ class TabbedSessionMiddleware
     /**
      * Handle an incoming request.
      *
-     * @param Closure(Request): (Response) $next
+     * @param  Closure(Request): (Response)  $next
      *
      * @throws ContainerExceptionInterface
      * @throws NoTabIdFoundException
