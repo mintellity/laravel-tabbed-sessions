@@ -3,17 +3,13 @@ After installing the package, you can use the frontend session to store the acti
 Add this to your `app.js` file:
 
 ```js
-$(document).ready(function () {
-    // Listen for Tab changes
-    $('a[data-toggle="tab"]').on('show.bs.tab', function (e) {
-        
-        // Append the array of active tabs [URL => Tab]
-        const activeTabs = window.tabSessionStorage.get('activeTab') ?? {};
-        activeTabs[String(window.location.pathname)] = $(e.target).attr('href');
-        
-        // Store the active tabs
-        window.tabSessionStorage.set('activeTab', activeTabs);
-    });
+document.addEventListener('show.bs.tab', function (e) {
+    // Append the array of active tabs [URL => Tab]
+    const activeTabs = window.tabSessionStorage.get('activeTab') ?? {};
+    activeTabs[String(window.location.pathname)] = e.target.dataset.bsTarget;
+
+    // Store the active tabs
+    window.tabSessionStorage.set('activeTab', activeTabs);
 });
 ```
 
